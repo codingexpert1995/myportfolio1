@@ -1,0 +1,89 @@
+@import 'aos/dist/aos.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --slate: #8892b0;
+  --light-slate: #a8b2d1;
+  --lightest-slate: #ccd6f6;
+  --white: #e6f1ff;
+  --green: #64ffda;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: grey black;
+  scroll-behavior: smooth;
+  background-color: black;
+  color: var(--slate);
+  font-display: swap;
+}
+
+body {
+  @apply antialiased;
+  font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .text-slate {
+    color: var(--slate);
+  }
+
+  .nav-link {
+    @apply relative text-sm font-medium text-slate hover:text-green-400 transition-all duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 w-0 h-[2px] bg-green-400 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-lightest-slate mb-8 flex items-center text-green-400;
+  }
+
+  /* Performance optimizations */
+  img {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
+  }
+
+  /* Reduce layout shift */
+  .loading-skeleton {
+    background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .section-title::before {
+    @apply text-green-400 mr-2 text-xl;
+  }
+
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 0.1em;
+    font-family: monospace;
+  }
+}

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /dist/
+
+
+# Sitemap location
+Sitemap: https://darshanbhuva.vercel.app/sitemap.xml
+
+# Additional sitemaps
+Sitemap: https://darshanbhuva.vercel.app/sitemap.xml

@@ -1,0 +1,8 @@
+.angular
+dist
+node_modules
+.vscode
+.bolt
+
+.vercel
+/.kiro

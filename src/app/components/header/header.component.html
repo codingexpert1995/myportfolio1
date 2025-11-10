@@ -1,0 +1,98 @@
+<header [ngClass]="{'hidden': isHeaderHidden}" role="banner">
+  <nav class="fixed w-full z-50 bg-black backdrop-blur-sm" role="navigation" aria-label="Main navigation">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20">
+        <div class="flex items-center">
+          <a routerLink="/" class="text-xl font-bold text-green-400 hover:text-green-300 transition-colors"
+            aria-label="Darshan Bhuva - Home">
+            <img src="/assets/logo.png" alt="Darshan Bhuva Logo" class="h-8 w-8" />
+          </a>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8" role="menubar">
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link" data-aos="fade-down" data-aos-delay="100" role="menuitem"><span
+              class="text-green-400 mr-1" aria-hidden="true"></span>Home</a>
+          <a routerLink="/about" routerLinkActive="active" class="nav-link" data-aos="fade-down" data-aos-delay="150" role="menuitem"><span
+              class="text-green-400 mr-1" aria-hidden="true"></span>About</a>
+          <a routerLink="/experience" routerLinkActive="active" class="nav-link" data-aos="fade-down" data-aos-delay="200" role="menuitem"><span
+              class="text-green-400 mr-1" aria-hidden="true"></span>Experience</a>
+          <a routerLink="/projects" routerLinkActive="active" class="nav-link" data-aos="fade-down" data-aos-delay="300" role="menuitem"><span
+              class="text-green-400 mr-1" aria-hidden="true"></span>Projects</a>
+          <a routerLink="/contact" routerLinkActive="active" class="nav-link" data-aos="fade-down" data-aos-delay="400" role="menuitem"><span
+              class="text-green-400 mr-1" aria-hidden="true"></span>Contact</a>
+          <a routerLink="/resume" routerLinkActive="active"
+            class="px-4 py-2 bg-green-400 text-black font-semibold rounded-lg hover:bg-green-300 transition-all duration-200 shadow-lg hover:shadow-green-400/25"
+            data-aos="fade-down" data-aos-delay="500" role="menuitem">Resume</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden flex items-center p-2 rounded-lg transition-colors" (click)="toggleMenu()"
+          [attr.aria-label]="isMenuOpen ? 'Close menu' : 'Open menu'">
+          <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path *ngIf="!isMenuOpen" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+            <path *ngIf="isMenuOpen" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar - Moved outside nav -->
+  <div class="md:hidden" *ngIf="isMenuOpen">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black/80 backdrop-blur-sm z-40" (click)="toggleMenu()"></div>
+
+    <!-- Sidebar -->
+    <div class="fixed right-0 top-0 w-[min(75vw,320px)] h-full z-50 bg-gray-900 border-l border-gray-700 shadow-2xl">
+      <!-- Close Button -->
+      <div class="flex justify-between items-center px-6 py-4 border-b border-gray-700">
+        <span class="text-lg font-semibold text-white">Menu</span>
+        <button (click)="toggleMenu()" aria-label="Close menu"
+          class="p-2 text-green-400 hover:text-green-300 rounded-lg transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Links -->
+      <nav class="flex flex-col px-4 py-6 space-y-2" role="menu" aria-label="Mobile navigation menu">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+          class="block py-2.5 px-3 text-white hover:text-green-400 hover:bg-gray-800 rounded-md transition-all duration-200"
+          (click)="toggleMenu()" role="menuitem">
+          Home
+        </a>
+        <a routerLink="/about" routerLinkActive="active"
+          class="block py-2.5 px-3 text-white hover:text-green-400 hover:bg-gray-800 rounded-md transition-all duration-200"
+          (click)="toggleMenu()" role="menuitem">
+          About
+        </a>
+        <a routerLink="/experience" routerLinkActive="active"
+          class="block py-2.5 px-3 text-white hover:text-green-400 hover:bg-gray-800 rounded-md transition-all duration-200"
+          (click)="toggleMenu()" role="menuitem">
+          Experience
+        </a>
+        <a routerLink="/projects" routerLinkActive="active"
+          class="block py-2.5 px-3 text-white hover:text-green-400 hover:bg-gray-800 rounded-md transition-all duration-200"
+          (click)="toggleMenu()" role="menuitem">
+          Projects
+        </a>
+        <a routerLink="/contact" routerLinkActive="active"
+          class="block py-2.5 px-3 text-white hover:text-green-400 hover:bg-gray-800 rounded-md transition-all duration-200"
+          (click)="toggleMenu()" role="menuitem">
+          Contact
+        </a>
+        <div class="pt-4">
+          <a routerLink="/resume" routerLinkActive="active"
+            class="block py-3 px-4 bg-green-400 text-black font-semibold rounded-lg hover:bg-green-300 transition-all duration-200 shadow-lg text-center"
+            (click)="toggleMenu()" role="menuitem">
+            Resume
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
